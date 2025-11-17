@@ -8,6 +8,8 @@
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 ---
+### Documentation link : https://data-pageup.github.io/LR/
+---
 
 ## 📋 Table of Contents
 
@@ -33,7 +35,6 @@ This project develops a predictive model for student academic performance by ana
 The study demonstrates that **previous academic performance** is the strongest predictor of exam scores (correlation: 0.93), alongside behavioral and environmental factors like motivation level, study hours, and stress levels.
 
 ---
-### Documentation link : https://data-pageup.github.io/LR/
 
 ## ✨ Key Features
 
