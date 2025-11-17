@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction - Documentation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+        }
+        
+        /* PDF Content Styles */
+        #pdf-content {
+            background: white;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            margin: -40px -40px 40px -40px;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 5px solid #667eea;
+            border-radius: 5px;
+        }
+        
+        .toc h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .toc ul {
+            list-style: none;
+        }
+        
+        .toc li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .toc a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        h2 {
+            color: #667eea;
+            font-size: 32px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #764ba2;
+            font-size: 24px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 20px;
+            border-left: 5px solid #ffc107;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        .key-metric {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+            display: inline-block;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .key-metric strong {
+            display: block;
+            font-size: 24px;
+            margin-top: 5px;
+        }
+        
+        .footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #28a745;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 10px 5px 10px 0;
+        }
+        
+        @media print {
+            .controls {
+                display: none;
+            }
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button onclick="generatePDF()">📥 Download PDF</button>
+    </div>
+    
+    <div class="container">
+        <div id="pdf-content">
+            <!-- Header -->
+            <div class="header">
+                <h1>🏆 Racing for the 'Score'</h1>
+                <p>Predicting Student Academic Performance Using Machine Learning</p>
+                <p>Complete Technical Documentation</p>
+            </div>
+            
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h2>📋 Table of Contents</h2>
+                <ul>
+                    <li><a href="#overview">1. Project Overview</a></li>
+                    <li><a href="#dataset">2. Dataset Description</a></li>
+                    <li><a href="#methodology">3. Methodology</a></li>
+                    <li><a href="#eda">4. Exploratory Data Analysis</a></li>
+                    <li><a href="#features">5. Feature Selection & Engineering</a></li>
+                    <li><a href="#models">6. Models Implemented</a></li>
+                    <li><a href="#results">7. Results & Performance</a></li>
+                    <li><a href="#assumptions">8. Assumption Testing</a></li>
+                    <li><a href="#findings">9. Key Findings</a></li>
+                    <li><a href="#usage">10. Usage Guide</a></li>
+                </ul>
+            </div>
+            
+            <!-- 1. Overview -->
+            <div class="section" id="overview">
+                <h2>1. Project Overview</h2>
+                <p>This project develops a comprehensive predictive model for student academic performance by analyzing a dataset of 80,000 student records. The primary objective is to identify factors influencing exam scores and compare the effectiveness of linear versus non-linear machine learning algorithms.</p>
+                
+                <div class="highlight">
+                    <strong>🎯 Primary Goal:</strong> Achieve high predictive accuracy while maintaining model interpretability to provide actionable insights for educational institutions.
+                </div>
+                
+                <h3>Project Scope</h3>
+                <ul>
+                    <li>Comprehensive exploratory data analysis (EDA)</li>
+                    <li>Feature selection using statistical significance testing</li>
+                    <li>Implementation of 5 regression models</li>
+                    <li>Rigorous assumption validation</li>
+                    <li>Model performance comparison and interpretation</li>
+                </ul>
+            </div>
+            
+            <!-- 2. Dataset -->
+            <div class="section" id="dataset">
+                <h2>2. Dataset Description</h2>
+                <p><strong>Source:</strong> Kaggle (Synthetically Generated)</p>
+                <p><strong>Volume:</strong> 80,000 student records with 31 features</p>
+                <p><strong>Data Quality:</strong> 0 missing values, 100% complete dataset</p>
+                
+                <h3>Feature Breakdown</h3>
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Count</th>
+                        <th>Examples</th>
+                    </tr>
+                    <tr>
+                        <td>Academic & Study</td>
+                        <td>9</td>
+                        <td>study_hours_per_day, attendance_percentage, previous_gpa</td>
+                    </tr>
+                    <tr>
+                        <td>Psychological & Health</td>
+                        <td>7</td>
+                        <td>mental_health_rating, stress_level, exam_anxiety_score</td>
+                    </tr>
+                    <tr>
+                        <td>Lifestyle & Demographics</td>
+                        <td>7</td>
+                        <td>age, gender, part_time_job, learning_style</td>
+                    </tr>
+                    <tr>
+                        <td>Family & Support</td>
+                        <td>3</td>
+                        <td>parental_education_level, family_income_range</td>
+                    </tr>
+                    <tr>
+                        <td>Technology & Screen</td>
+                        <td>4</td>
+                        <td>social_media_hours, netflix_hours, internet_quality</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <!-- 3. Methodology -->
+            <div class="section" id="methodology">
+                <h2>3. Methodology</h2>
+                <p>Our research followed a structured data science pipeline:</p>
+                
+                <h3>Phase 1: Data Preprocessing</h3>
+                <ul>
+                    <li>Removed irrelevant identifiers (student_id)</li>
+                    <li>Verified data completeness</li>
+                    <li>Handled categorical and numerical data appropriately</li>
+                    <li>Applied standard scaling to numerical features</li>
+                </ul>
+                
+                <h3>Phase 2: Exploratory Analysis</h3>
+                <ul>
+                    <li>Univariate analysis for all 30 features</li>
+                    <li>Correlation analysis and heatmap generation</li>
+                    <li>Distribution analysis and outlier detection</li>
+                </ul>
+                
+                <h3>Phase 3: Feature Selection</h3>
+                <ul>
+                    <li>Pearson Correlation Test for numerical variables</li>
+                    <li>Chi-Square Test for categorical variables</li>
+                    <li>Significance level: p &lt; 0.05</li>
+                </ul>
+                
+                <h3>Phase 4: Model Development</h3>
+                <ul>
+                    <li>Train-test split: 80-20 ratio</li>
+                    <li>Implementation of 5 regression models</li>
+                    <li>Hyperparameter tuning</li>
+                </ul>
+            </div>
+            
+            <!-- 4. EDA -->
+            <div class="section" id="eda">
+                <h2>4. Exploratory Data Analysis</h2>
+                
+                <h3>Key Findings from EDA</h3>
+                <p><strong>Age Distribution:</strong> Students aged 16-28, mean ~22 years (typical college population)</p>
+                <p><strong>Gender Distribution:</strong> Balanced representation across all genders</p>
+                <p><strong>Study Hours:</strong> Mean 4.17 hours/day with range 0-12 hours</p>
+                <p><strong>Attendance:</strong> Mean 69.97% with most students attending 55-85%</p>
+                <p><strong>Sleep Hours:</strong> Mean 7.02 hours, normal distribution centered at 6-8 hours</p>
+                <p><strong>Exam Scores:</strong> Mean 89.14 out of 100, left-skewed distribution (mean &gt; median)</p>
+                
+                <h3>Correlation Analysis</h3>
+                <div class="key-metric">
+                    Previous GPA
+                    <strong>r = 0.93</strong>
+                </div>
+                <div class="key-metric">
+                    Motivation Level
+                    <strong>r = 0.25</strong>
+                </div>
+                <div class="key-metric">
+                    Exam Anxiety
+                    <strong>r = -0.24</strong>
+                </div>
+            </div>
+            
+            <!-- 5. Features -->
+            <div class="section" id="features">
+                <h2>5. Feature Selection & Engineering</h2>
+                
+                <h3>Selected Numerical Features (9 total)</h3>
+                <ol>
+                    <li>study_hours_per_day (p &lt; 0.001)</li>
+                    <li>sleep_hours (p &lt; 0.001)</li>
+                    <li>exercise_frequency (p &lt; 0.001)</li>
+                    <li>mental_health_rating (p &lt; 0.01)</li>
+                    <li>previous_gpa (p &lt; 0.001) ⭐ Strongest</li>
+                    <li>stress_level (p &lt; 0.001)</li>
+                    <li>screen_time (p &lt; 0.001)</li>
+                    <li>motivation_level (p &lt; 0.001)</li>
+                    <li>exam_anxiety_score (p &lt; 0.001)</li>
+                </ol>
+                
+                <h3>Selected Categorical Features (4 total)</h3>
+                <ol>
+                    <li>access_to_tutoring (χ² = 420.48, p &lt; 0.001)</li>
+                    <li>dropout_risk (χ² = 332.68, p &lt; 0.001)</li>
+                    <li>study_environment (χ² = 250.92, p &lt; 0.001)</li>
+                    <li>major (χ² = 6.28, p &lt; 0.05)</li>
+                </ol>
+                
+                <h3>Encoding Strategy</h3>
+                <ul>
+                    <li>Binary variables: Label Encoding</li>
+                    <li>Multi-class variables: One-Hot Encoding (drop_first=True)</li>
+                    <li>Numerical features: Standard Scaling (mean=0, std=1)</li>
+                </ul>
+                
+                <p><strong>Final Dataset Shape:</strong> 80,000 × 21 features</p>
+            </div>
+            
+            <!-- 6. Models -->
+            <div class="section" id="models">
+                <h2>6. Models Implemented</h2>
+                
+                <h3>Linear Models</h3>
+                
+                <p><strong>Multiple Linear Regression (MLR)</strong></p>
+                <p>A baseline linear model that fits a hyperplane to the data. Highly interpretable and fast to train.</p>
+                
+                <p><strong>Ridge Regression</strong></p>
+                <p>L2 regularized regression (alpha=1.0) that penalizes large coefficients to prevent overfitting and handle multicollinearity.</p>
+                
+                <p><strong>Lasso Regression</strong></p>
+                <p>L1 regularized regression (alpha=0.01) that performs feature selection by shrinking insignificant coefficients to zero.</p>
+                
+                <h3>Non-Linear Models</h3>
+                
+                <p><strong>Random Forest</strong></p>
+                <p>Ensemble of 100 decision trees trained on random subsets, robust to outliers and captures non-linear patterns.</p>
+                
+                <p><strong>Support Vector Regressor (SVR)</strong></p>
+                <p>RBF kernel SVM that maps data to higher dimensions to find optimal regression hyperplane.</p>
+            </div>
+            
+            <!-- 7. Results -->
+            <div class="section" id="results">
+                <h2>7. Results & Performance</h2>
+                
+                <h3>Model Performance Comparison</h3>
+                <table>
+                    <tr>
+                        <th>Model</th>
+                        <th>R² Score</th>
+                        <th>RMSE</th>
+                        <th>MAE</th>
+                        <th>Rank</th>
+                    </tr>
+                    <tr>
+                        <td>Linear Regression</td>
+                        <td>0.8705</td>
+                        <td>0.1305</td>
+                        <td>0.2757</td>
+                        <td>🥇 1st</td>
+                    </tr>
+                    <tr>
+                        <td>Ridge Regression</td>
+                        <td>0.8705</td>
+                        <td>0.1305</td>
+                        <td>0.2757</td>
+                        <td>🥇 1st</td>
+                    </tr>
+                    <tr>
+                        <td>Lasso Regression</td>
+                        <td>0.8703</td>
+                        <td>0.1307</td>
+                        <td>0.2769</td>
+                        <td>🥈 3rd</td>
+                    </tr>
+                    <tr>
+                        <td>Random Forest</td>
+                        <td>0.8669</td>
+                        <td>0.1341</td>
+                        <td>0.2862</td>
+                        <td>🥉 4th</td>
+                    </tr>
+                    <tr>
+                        <td>SVR (RBF)</td>
+                        <td>0.8663</td>
+                        <td>0.1347</td>
+                        <td>0.2760</td>
+                        <td>5th</td>
+                    </tr>
+                </table>
+                
+                <h3>Key Insights</h3>
+                <ul>
+                    <li><strong>Linear models outperform non-linear models</strong> by ~0.4%, indicating predominantly linear relationships</li>
+                    <li><strong>R² ≥ 0.866</strong> indicates excellent predictive power across all models</li>
+                    <li><strong>RMSE variation is minimal</strong> (0.1305 - 0.1347), suggesting stable predictions</li>
+                    <li><strong>Recommendation:</strong> Use Linear Regression or Ridge for interpretability and performance</li>
+                </ul>
+            </div>
+            
+            <!-- 8. Assumptions -->
+            <div class="section" id="assumptions">
+                <h2>8. Assumption Testing for Linear Models</h2>
+                
+                <h3>Linearity ✓</h3>
+                <p>Residuals vs. Fitted plots show random scatter around zero, confirming linear relationships.</p>
+                
+                <h3>Homoscedasticity ⚠️</h3>
+                <p>Breusch-Pagan test: χ² = 3317.84, p &lt; 0.001. Minor heteroscedasticity detected but does not significantly affect predictions.</p>
+                
+                <h3>Normality ⚠️</h3>
+                <p>Shapiro-Wilk test: p-values ≈ 10⁻⁴⁶ to 10⁻⁴⁸. Q-Q plots show mild deviations in tails, but predictions remain reliable.</p>
+                
+                <h3>Multicollinearity ⚠️</h3>
+                <p><strong>Variance Inflation Factors (VIF):</strong></p>
+                <ul>
+                    <li>motivation_level: VIF = 6.55 (moderate)</li>
+                    <li>exam_anxiety_score: VIF = 6.37 (moderate)</li>
+                    <li>Other variables: VIF &lt; 3 (acceptable)</li>
+                </ul>
+                <p>One-hot encoding causes expected correlations; Ridge/Lasso address this through regularization.</p>
+                
+                <h3>Autocorrelation ✓</h3>
+                <p>Durbin-Watson Statistic ≈ 2.0 for all models, confirming no autocorrelation in residuals.</p>
+                
+                <div class="highlight">
+                    <strong>Conclusion:</strong> Linear models are robust for this dataset despite minor assumption violations. Regularized models (Ridge, Lasso) handle multicollinearity effectively.
+                </div>
+            </div>
+            
+            <!-- 9. Findings -->
+            <div class="section" id="findings">
+                <h2>9. Key Findings</h2>
+                
+                <h3>Top Predictors of Exam Score</h3>
+                <table>
+                    <tr>
+                        <th>Predictor</th>
+                        <th>Correlation</th>
+                        <th>Strength</th>
+                        <th>Impact</th>
+                    </tr>
+                    <tr>
+                        <td>Previous GPA</td>
+                        <td>r = 0.93</td>
+                        <td>Very Strong</td>
+                        <td>✅ Positive</td>
+                    </tr>
+                    <tr>
+                        <td>Motivation Level</td>
+                        <td>r = 0.25</td>
+                        <td>Moderate</td>
+                        <td>✅ Positive</td>
+                    </tr>
+                    <tr>
+                        <td>Study Hours/Day</td>
+                        <td>r = 0.24</td>
+                        <td>Moderate</td>
+                        <td>✅ Positive</td>
+                    </tr>
+                    <tr>
+                        <td>Screen Time</td>
+                        <td>r = 0.17</td>
+                        <td>Weak</td>
+                        <td>✅ Positive</td>
+                    </tr>
+                    <tr>
+                        <td>Exam Anxiety</td>
+                        <td>r = -0.24</td>
+                        <td>Moderate</td>
+                        <td>❌ Negative</td>
+                    </tr>
+                    <tr>
+                        <td>Stress Level</td>
+                        <td>r = -0.12</td>
+                        <td>Weak</td>
+                        <td>❌ Negative</td>
+                    </tr>
+                </table>
+                
+                <h3>Actionable Recommendations</h3>
+                <ul>
+                    <li><strong>For Students:</strong> Focus on maintaining high motivation levels and consistent study habits (2-5.5 hrs/day)</li>
+                    <li><strong>For Institutions:</strong> Implement mental health support programs to reduce exam anxiety</li>
+                    <li><strong>For Educators:</strong> Prioritize tutoring access and create conducive study environments</li>
+                    <li><strong>For Counselors:</strong> Identify high-anxiety students early for targeted intervention</li>
+                </ul>
+            </div>
+            
+            <!-- 10. Usage -->
+            <div class="section" id="usage">
+                <h2>10. Usage Guide</h2>
+                
+                <h3>Installation</h3>
+                <div class="code-block">
+pip install pandas numpy scikit-learn matplotlib seaborn scipy statsmodels
+                </div>
+                
+                <h3>Basic Usage</h3>
+                <div class="code-block">
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+
+# Load data
+import pandas as pd
+df = pd.read_csv('student_performance_dataset.csv')
+
+# Prepare
+X = df.drop('exam_score', axis=1)
+y = df['exam_score']
+
+# Split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Train
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Evaluate
+score = r2_score(y_test, model.predict(X_test))
+print(f"R² Score: {score:.4f}")
+                </div>
+                
+                <h3>Model Selection</h3>
+                <ul>
+                    <li><strong>For Best Accuracy:</strong> Use Linear Regression or Ridge</li>
+                    <li><strong>For Feature Selection:</strong> Use Lasso</li>
+                    <li><strong>For Non-linear Data:</strong> Use Random Forest or SVR</li>
+                    <li><strong>For Interpretability:</strong> Use Linear Regression</li>
+                </ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <p>📊 Racing for the 'Score' - Student Academic Performance Prediction</p>
+                <p>📅 Generated: 2025 | 🔬 Data Science Research Project</p>
+                <p>Made with ❤️ for Educational Analytics</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('pdf-content');
+            const opt = {
+                margin: 10,
+                filename: 'Student_Performance_Documentation.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+</html>
