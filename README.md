@@ -8,7 +8,7 @@
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 ---
-### Documentation link : https://data-pageup.github.io/LR/
+### Documentation link :[ https://data-pageup.github.io/LR/](https://data-pageup.github.io/Score-Across-Linear-and-Non-Linear-Models/)
 ---
 
 ## 📋 Table of Contents
