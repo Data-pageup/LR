@@ -52,7 +52,7 @@ The study demonstrates that **previous academic performance** is the strongest p
 **Source**: Kaggle (Synthetically Generated)  
 **Size**: 80,000 student records  
 **Features**: 31 attributes across 5 categories
-
+ 
 ### Feature Categories
 
 | Category | Count | Examples |
