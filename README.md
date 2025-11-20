@@ -91,18 +91,18 @@ project/
 
 ## 🔬 Methodology
 
-### 1. **Data Cleaning** 🧹
+### 1. **Data Cleaning** 
 - Removed irrelevant identifier columns (student_id)
 - Verified data completeness: 0 missing values
 - Dataset quality: 100% ready for analysis
 
-### 2. **Exploratory Data Analysis** 📈
+### 2. **Exploratory Data Analysis** 
 - Univariate analysis on all 30 features
 - Correlation heatmap: identified 0.93 correlation with previous_gpa
 - Distribution analysis: balanced dataset across all major categories
 - Outlier detection: minimal outliers except in study_hours_per_day
 
-### 3. **Feature Selection** 🎯
+### 3. **Feature Selection** 
 **Numerical Variables** (Pearson Correlation Test):
 - 9 significant features identified (p < 0.05)
 - Top predictors: previous_gpa, motivation_level, study_hours_per_day
@@ -124,7 +124,7 @@ project/
 
 ---
 
-## 🤖 Models Implemented
+##  Models Implemented
 
 ### Linear Models
 
@@ -143,7 +143,7 @@ project/
 
 ---
 
-## 📊 Results & Performance
+##  Results & Performance
 
 ### Model Ranking
 ```
