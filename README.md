@@ -168,27 +168,6 @@ project/
 
 ---
 
-## 🚀 Installation
-
-### Prerequisites
-- Python 3.8+
-- pip or conda
-
-### Setup
-
-```bash
-# Clone the repository
-git clone <repository-url>
-cd Racing-for-Score
-
-# Create virtual environment (optional)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
 ### Dependencies
 
 ```
@@ -204,7 +183,7 @@ missingno==0.5.1
 
 ---
 
-## 💻 Usage
+##  Usage
 
 ### Quick Start
 
