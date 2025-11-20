@@ -47,7 +47,7 @@ The study demonstrates that **previous academic performance** is the strongest p
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 **Source**: Kaggle (Synthetically Generated)  
 **Size**: 80,000 student records  
