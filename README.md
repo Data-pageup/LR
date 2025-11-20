@@ -28,7 +28,7 @@
 
 ---
 
-## 🎯 Overview
+##  Overview
 
 This project develops a predictive model for student academic performance by analyzing 80,000 synthetically generated student records. By leveraging both linear and non-linear machine learning algorithms, we identify key factors influencing exam scores and provide actionable insights for educational institutions.
 
