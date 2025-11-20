@@ -36,7 +36,7 @@ The study demonstrates that **previous academic performance** is the strongest p
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 - **Comprehensive EDA**: In-depth exploratory analysis with 47 visualizations
 - **Advanced Feature Engineering**: Statistical significance testing for numerical and categorical variables
