@@ -11,7 +11,7 @@
 ### Documentation link :[ https://data-pageup.github.io/LR/](https://data-pageup.github.io/Score-Across-Linear-and-Non-Linear-Models/)
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Overview](#overview)
 - [Key Features](#key-features)
