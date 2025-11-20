@@ -1,4 +1,4 @@
-# 🏆 Racing for the 'Score' Across Linear and Non-Linear Models
+#  Racing for the 'Score' Across Linear and Non-Linear Models
 
 > A comprehensive data science project predicting student academic performance using machine learning techniques
 
