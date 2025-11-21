@@ -65,30 +65,6 @@ The study demonstrates that **previous academic performance** is the strongest p
 
 ---
 
-## 📁 Project Structure
-
-```
-project/
-├── data/
-│   └── student_performance_dataset.csv (80,000 × 31 columns)
-├── notebooks/
-│   ├── 01_data_cleaning.ipynb
-│   ├── 02_eda.ipynb
-│   ├── 03_feature_selection.ipynb
-│   ├── 04_model_building.ipynb
-│   └── 05_assumption_testing.ipynb
-├── src/
-│   ├── preprocessing.py
-│   ├── models.py
-│   └── evaluation.py
-├── results/
-│   ├── visualizations/
-│   └── model_performance.csv
-└── README.md
-```
-
----
-
 ## 🔬 Methodology
 
 ### 1. **Data Cleaning** 
