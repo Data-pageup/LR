@@ -55,7 +55,7 @@ The study demonstrates that **previous academic performance** is the strongest p
  
 ### Feature Categories
 
-| Category | Count | Examples |
+| Category | Count | Examples |  
 |----------|-------|----------|
 | **Academic & Study** | 9 | study_hours_per_day, attendance_percentage, previous_gpa |
 | **Psychological & Health** | 7 | mental_health_rating, stress_level, exam_anxiety_score |
