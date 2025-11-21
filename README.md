@@ -35,7 +35,7 @@ This project develops a predictive model for student academic performance by ana
 The study demonstrates that **previous academic performance** is the strongest predictor of exam scores (correlation: 0.93), alongside behavioral and environmental factors like motivation level, study hours, and stress levels.
 
 ---
-
+ 
 ##  Key Features
 
 - **Comprehensive EDA**: In-depth exploratory analysis with 47 visualizations
