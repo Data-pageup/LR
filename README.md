@@ -1,6 +1,6 @@
 #  Racing for the 'Score' Across Linear and Non-Linear Models
 
-> A comprehensive data science project predicting student academic performance using machine learning techniques
+> A comprehensive data science project predicting student academic performance using machine learning techniques 
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.0+-orange?logo=scikit-learn)
